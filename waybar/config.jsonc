@@ -50,7 +50,6 @@
     //    "keyboard-state",
         "sway/language",
         "backlight",
-        "idle_inhibitor",
         "custom/power"
     ],
     // Modules configuration
@@ -82,11 +81,6 @@
 		"tooltip": false,
 		"on-click": "waypaper"
     },
-    "custom/gpt": {
-	"format": " ",
-		"tooltip": false,
-		"on-click": "firefox -P ai --new-window https://chatgpt.com/"
-    },
     "sway/scratchpad": {
         "format": "{icon} {count}",
         "show-empty": false,
@@ -100,13 +94,6 @@
         "interval": 5,
         "tooltip": false,
         "format": "{}"
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
     },
     "tray": {
         // "icon-size": 21,
