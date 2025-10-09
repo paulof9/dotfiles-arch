@@ -11,15 +11,6 @@
 //                         /$$  | $$                                                                                 /$$  \ $$
 //                        | $$$$$$$/                                                                                |  $$$$$$/
 //                         \______/                                                                                  \______/
-//   ___               _
-// |  _ \             | |
-// | |_) |_   _       | |_      ___ __
-// |  _ <| | | |  _   | \ \ /\ / / '_ \
-// | |_) | |_| | | |__| |\ V  V /| |_) |
-// |____/ \__, |  \____/  \_/\_/ | .__/
-//         __/ |                 | |
-//        |___/                  |_|
-
 {
        "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
@@ -68,7 +59,7 @@
                 "on-click": "kitty -e cava"
     },
     "custom/spotify": {
-    "exec": "/usr/bin/python3 ~/.config/scripts/mediaplayer.py --player spotify",
+    "exec": "/usr/bin/python3 ~/.config/hypr/scripts/mediaplayer.py --player spotify",
     "format": "{}  ",
     "return-type": "json",
     "on-click": "playerctl --player spotify play-pause",
@@ -89,7 +80,7 @@
         "tooltip-format": "{app}: {title}"
     },
     "custom/weather": {
-        "exec": "bash ~/.config/scripts/waybar-weather.sh",
+        "exec": "bash ~/.config/hypr/scripts/waybar-weather.sh",
         "on-click": "mousam",
         "interval": 5,
         "tooltip": false,
@@ -100,7 +91,7 @@
         "spacing": 10
     },
     "clock": {
-        // "timezone": "America/New_York",
+        // "timezone": "America/Sao_Paulo",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
@@ -151,7 +142,7 @@
     },
     "network": {
         "format-wifi": "Connected   • ",
-	"on-click": "kitty --class floatwlmenu -e bash ~/.config/scripts/wireless-menu.sh",
+	"on-click": "kitty --class floatwlmenu -e bash ~/.config/hypr/scripts/wireless-menu.sh",
         "format-ethernet": "Connected 󰈀  • ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
