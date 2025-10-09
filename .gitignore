@@ -1,12 +1,13 @@
 *
 !.gitignore
+!README.md
+!pavucontrol.ini
+
 !hypr/**
 !wofi/**
 !waybar/**
 !fastfetch/**
 !scripts/**
 !wlogout/**
-!pavucontrol.ini
-!README.md
 !nano/**
 !superfile/**
