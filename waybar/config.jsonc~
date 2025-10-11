@@ -22,12 +22,9 @@
     "hyprland/workspaces",
     "network",
     "memory",
-    "custom/gpt",
     "custom/weather",
     "battery",
     "battery#bat2",
-    "sway/mode",
-    "sway/scratchpad"
 
     ],
     "modules-center": [
@@ -38,8 +35,6 @@
         "custom/spotify",
         "pulseaudio",
         "temperature",
-    //    "keyboard-state",
-        "sway/language",
         "backlight",
         "custom/power"
     ],
@@ -59,7 +54,7 @@
                 "on-click": "kitty -e cava"
     },
     "custom/spotify": {
-    "exec": "/usr/bin/python3 ~/.config/hypr/scripts/mediaplayer.py --player spotify",
+    "exec": "/usr/bin/python3 ~/.config/scripts/mediaplayer.py --player spotify-launcher",
     "format": "{}  ",
     "return-type": "json",
     "on-click": "playerctl --player spotify play-pause",
@@ -80,7 +75,7 @@
         "tooltip-format": "{app}: {title}"
     },
     "custom/weather": {
-        "exec": "bash ~/.config/hypr/scripts/waybar-weather.sh",
+        "exec": "bash ~/.config/scripts/waybar-weather.sh",
         "on-click": "mousam",
         "interval": 5,
         "tooltip": false,
@@ -142,7 +137,7 @@
     },
     "network": {
         "format-wifi": "Connected   • ",
-	"on-click": "kitty --class floatwlmenu -e bash ~/.config/hypr/scripts/wireless-menu.sh",
+	"on-click": "kitty --class floatwlmenu -e bash ~/.config/scripts/wireless-menu.sh",
         "format-ethernet": "Connected 󰈀  • ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
@@ -178,8 +173,8 @@
             "default": "🎜"
         },
         "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+        "exec": "$HOME/.config/scripts/mediaplayer.py 2> /dev/null" // Script in resources folder
+        // "exec": "$HOME/.config/scripts/mediaplayer.py --player spotify-launcher 2> /dev/null" // Filter player based on name
     },
     "custom/power": {
         "format" : " ⏻ ",
