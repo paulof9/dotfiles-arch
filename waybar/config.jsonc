@@ -24,8 +24,7 @@
     "memory",
     "custom/weather",
     "battery",
-    "battery#bat2",
-
+    "custom/battery-notify"
     ],
     "modules-center": [
 	"clock"
@@ -45,14 +44,6 @@
             "*": 3
        }
     },
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
-    },
-    "custom/cava": {
-        "format" : " ",
-                "tooltip": false,
-                "on-click": "kitty -e cava"
-    },
     "custom/spotify": {
     "exec": "/usr/bin/python3 /home/paulo/.config/scripts/mediaplayer.py --player spotify",
     "format": "{}  ",
@@ -64,7 +55,6 @@
     },
     "custom/weather": {
         "exec": "bash ~/.config/scripts/waybar-weather.sh",
-        "on-click": "mousam",
         "interval": 5,
         "tooltip": false,
         "format": "{}"
@@ -90,38 +80,46 @@
     "backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "on-click": "pgrep -x hyprsunset > /dev/null && pkill -9 hyprsunset || hyprsunset -t 4500",
+        "on-click-right":"~/.config/scripts/toggle-hypridle.sh"
     },
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-	"interval": 3,
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": [" ", " ", " ", " ", " "]
+    "custom/governor": {
+    "format": "{} {}", 
+    "exec": "~/.config/scripts/governor.sh",
+    "interval": 2, 
+    "return-type": "text",
+    "format-icons": {
+        "performance": "", // Ícone para modo performance
+        "powersave": "",   // Ícone para modo economia
+        "schedutil": ""  // Ícone para modo padrão
     },
-    "battery#bat2": {
-        "bat": "BAT2"
+    "tooltip": true,
+    "tooltip-format": "CPU Governor: {}"
+},
 
+"battery": {
+    "states": {
+        // "good": 95,
+        "warning": 30,
+        "critical": 15
     },
-    "power-profiles-daemon": {
-      "format": "{icon}",
-      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-      "tooltip": true,
-      "format-icons": {
-        "default": "",
-        "performance": "",
-        "balanced": "",
-        "power-saver": ""
-      }
+    "format": "{capacity}% {icon}",
+    "format-full": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-alt": "{time} {icon}",
+    "interval": 3,
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+        "format-icons": [" ", " ", " ", " ", " "],
+        "on-click": "~/.config/scripts/battery-save.sh"
+    },
+    "custom/battery-notify": {
+        "exec": "~/.config/scripts/battery-notify.sh",
+        "interval": 60,
+        "tooltip": false,
+        "format": ""
     },
     "network": {
         "format-wifi": "Connected   • ",

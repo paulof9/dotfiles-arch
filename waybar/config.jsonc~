@@ -24,8 +24,7 @@
     "memory",
     "custom/weather",
     "battery",
-    "battery#bat2",
-
+    "custom/battery-notify"
     ],
     "modules-center": [
 	"clock"
@@ -45,38 +44,17 @@
             "*": 3
        }
     },
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
-    },
-    "custom/cava": {
-        "format" : " ",
-                "tooltip": false,
-                "on-click": "kitty -e cava"
-    },
     "custom/spotify": {
-    "exec": "/usr/bin/python3 ~/.config/scripts/mediaplayer.py --player spotify-launcher",
+    "exec": "/usr/bin/python3 /home/paulo/.config/scripts/mediaplayer.py --player spotify",
     "format": "{}  ",
     "return-type": "json",
     "on-click": "playerctl --player spotify play-pause",
-    "on-double-click": "playerctl next",
-    "on-scroll-up": "playerctl next",
-    "on-scroll-down": "playerctl previous"
-    },
-    "custom/waypaper": {
-	"format": " ",
-		"tooltip": false,
-		"on-click": "waypaper"
-    },
-    "sway/scratchpad": {
-        "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": ["", ""],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
+    "on-double-click": "playerctl --player spotify next",
+    "on-scroll-up": "playerctl --player spotify next",
+    "on-scroll-down": "playerctl --player spotify previous"
     },
     "custom/weather": {
         "exec": "bash ~/.config/scripts/waybar-weather.sh",
-        "on-click": "mousam",
         "interval": 5,
         "tooltip": false,
         "format": "{}"
@@ -102,7 +80,9 @@
     "backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "on-click": "pgrep -x hyprsunset > /dev/null && pkill -9 hyprsunset || hyprsunset -t 4500",
+        "on-click-right":"~/.config/scripts/toggle-hypridle.sh"
     },
     "battery": {
         "states": {
@@ -118,11 +98,8 @@
 	"interval": 3,
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": [" ", " ", " ", " ", " "]
-    },
-    "battery#bat2": {
-        "bat": "BAT2"
-
+        "format-icons": [" ", " ", " ", " ", " "],
+        "on-click": "~/.config/scripts/battery-save.sh"
     },
     "power-profiles-daemon": {
       "format": "{icon}",
@@ -134,6 +111,12 @@
         "balanced": "",
         "power-saver": ""
       }
+    },
+    "custom/battery-notify": {
+        "exec": "~/.config/scripts/battery-notify.sh",
+        "interval": 60,
+        "tooltip": false,
+        "format": ""
     },
     "network": {
         "format-wifi": "Connected   • ",
@@ -163,18 +146,6 @@
             "default": ["", "", " "]
         },
         "on-click": "pavucontrol"
-    },
-    "custom/media": {
-        "format": "{icon} {text}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/scripts/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/scripts/mediaplayer.py --player spotify-launcher 2> /dev/null" // Filter player based on name
     },
     "custom/power": {
         "format" : " ⏻ ",
